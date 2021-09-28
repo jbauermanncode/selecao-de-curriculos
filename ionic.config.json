@@ -1,0 +1,7 @@
+{
+  "name": "selecao-de-curriculos",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
