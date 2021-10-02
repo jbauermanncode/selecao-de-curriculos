@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recursos Humanos</ion-title>
+    <ion-button slot="end" (click)="logout()">Sair</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-label for="txNome">Nome do Candidato</ion-label>
+    <ion-input type="txt" name="txNome" [(ngModel)]="nome" placeholder="Digite o nome do candidato"></ion-input>
+  </div>
+  <div>
+    <ion-label for="txVaga">Vaga Pretendida</ion-label>
+    <ion-input type="txt" name="txVaga" [(ngModel)]="vaga" placeholder="Qual vaga pretendida"></ion-input>
+  </div>
+  <div>
+    <ion-label for="txAvaliador">Gerente Avaliador</ion-label>
+    <ion-input type="txt" name="txAvaliador" [(ngModel)]="avaliador" placeholder="Digite o nome do Gerente Avaliador">
+    </ion-input>
+  </div>
+  <label for="txFormacao_edu">Formação Educacional:</label>
+  <div>
+
+    <textarea type="txt" name="txFormacao_edu" [(ngModel)]="formacao_edu" rows="5" cols="33"></textarea>
+  </div>
+
+  <label for="txExp_pro">Experiência Profissional:</label>
+  <div>
+
+    <textarea type="txt" name="txExp_pro" [(ngModel)]="exp_pro" rows="5" cols="33"></textarea>
+
+  </div>
+
+  <div>
+    <div>
+      <ion-label for="txIngles">Nível de Inglês</ion-label>
+      <ion-input type="txt" name="txIngles" [(ngModel)]="ingles" placeholder="Nivel de Ingles"></ion-input>
+    </div>
+  </div>
+
+  <ion-item>
+    <ion-button  color="secondary" (click)="cadastrar()">Cadastrar</ion-button>
+  </ion-item>
+
+  <ion-label color='danger'>
+    {{mensagem}}
+  </ion-label>
+
+  <ion-list>
+    <ion-list-header>
+      <h4>Candidatos</h4>
+    </ion-list-header>
+    <ion-item *ngFor="let cand of candidatos">
+      <ion-label>{{cand.nome + '('+ cand.vaga +')'}}</ion-label>
+      <ion-status *ngIf="part.status === 0" color="secondary">Disponível</ion-status>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

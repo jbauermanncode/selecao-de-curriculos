@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { RECURSOS_HUMANOS, SystemService } from '../system.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,24 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  email: string;
+  senha: string;
+  mensagem: string;
+
+  constructor(private server: SystemService, private router: Router) {}
+
+  login(){
+    try{
+      this.server.login(this.email, this.senha);
+      if(this.server.logado.perfil === RECURSOS_HUMANOS){
+
+        this.router.navigate(['/admin']);
+      } else{
+        this.router.navigate(['/gerente-de-area']);
+      }
+    }catch(error){
+      this.mensagem = error;
+    }
+  }
 
 }
